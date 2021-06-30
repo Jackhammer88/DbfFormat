@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>DbfLibrary</title>
+    <authors>Jackhammer88</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/Jackhammer88/DbfFormat</projectUrl>
+    <description>The library deals with the dbf format.</description>
+	  <dependencies>
+		  <group targetFramework=".NETFramework4.8" />
+	  </dependencies>
+	  <releaseNotes></releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Dbf</tags>
+  </metadata>
+</package>

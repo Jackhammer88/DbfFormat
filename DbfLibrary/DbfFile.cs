@@ -26,8 +26,6 @@ namespace Dbf
 
         private static Func<string, string> defaultCorrection = (i) => { return ArabicToFarsi(i); };
 
-        //private static Func<string, string> defaultCorrection = (i) => { return i.Replace('ي', 'ی').Replace('ك', 'ک'); };
-
         static bool correctFarsiCharacters = true;
 
         private static Dictionary<char, Func<byte[], object>> MapFunction;
@@ -86,8 +84,6 @@ namespace Dbf
         private static readonly Func<byte[], object> ToDouble =
             (input) =>
             {
-                //string value = Encoding.ASCII.GetString(input).Trim();
-                //return string.IsNullOrEmpty(value) ? DBNull.Value : (object)double.Parse(value);
                 double value;
                 return double.TryParse(Encoding.ASCII.GetString(input), out value) ? (object)value : DBNull.Value;
             };
@@ -257,7 +253,6 @@ namespace Dbf
                 columns.Add(DbfFieldDescriptor.Parse(buffer, DbfFileFormat.fieldsEncoding));
             }
 
-            //System.Data.DataTable result = MakeTableSchema(tableName, columns);
             var result = new object[header.NumberOfRecords][];
 
             ((FileStream)reader.BaseStream).Seek(header.LengthOfHeader, SeekOrigin.Begin);

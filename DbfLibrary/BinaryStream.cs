@@ -1,10 +1,4 @@
-﻿// besmellahe rahmane rahim
-// Allahomma ajjel le-valiyek al-faraj
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -89,7 +83,6 @@ namespace IRI.Ket.IO
 
         public static T ByteArrayToStructure<T>(byte[] buffer)
         {
-            //int len = Marshal.SizeOf(typeof(T));
             int length = buffer.Length;
 
             IntPtr i = Marshal.AllocHGlobal(length);

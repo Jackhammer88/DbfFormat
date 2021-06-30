@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -87,7 +85,6 @@ namespace Dbf
         {
             string name = encoding.GetString(byteArray, 0, 11).Trim('\0');
 
-            //char type = BitConverter.ToChar(byteArray, 11);
             char type = char.Parse(Encoding.ASCII.GetString(byteArray, 11, 1));
 
             byte length = byteArray[16];
