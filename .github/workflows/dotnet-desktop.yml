@@ -22,8 +22,7 @@ jobs:
 
     - name: Build with MSBuild
       run: |
-        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" /p:Configuration=Release /p:Platform="Any CPU"
-
+        Start-Process -FilePath "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" -ArgumentList '/p:Configuration=Release', '/p:Platform="Any CPU"'
 
     - name: Pack
       run: nuget pack DbfLibrary\DbfLibrary.csproj -Properties Configuration=Release -OutputDirectory out
