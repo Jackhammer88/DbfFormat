@@ -15,7 +15,14 @@ jobs:
 
     - name: Display Git Tag Version
       run: |
-        echo "Git Tag Version: $(git describe --tags --abbrev=0)"
+        TAG=$(git describe --tags --abbrev=0 2>&1)
+        if [ $? -eq 0 ]; then
+            echo "Git Tag Version: $TAG"
+        else
+            echo "No tags found"
+        fi
+      shell: bash
+
 
     - name: Add MSBuild to PATH
       run: |
