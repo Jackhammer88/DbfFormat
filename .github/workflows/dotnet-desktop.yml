@@ -16,6 +16,10 @@ jobs:
     - name: Setup MSBuild
       uses: warrenbuckley/Setup-MSBuild@v1
 
+    - name: Add MSBuild to PATH
+      run: |
+        echo "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin" >> $GITHUB_PATH
+
     - name: Build with MSBuild
       run: msbuild /p:Configuration=Release /p:Platform="Any CPU"
 
