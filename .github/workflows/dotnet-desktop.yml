@@ -1,0 +1,28 @@
+name: Build and Publish NuGet
+
+on:
+  push:
+    branches:
+      - main  # Или имя вашей основной ветки
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # .NET Framework не требует отдельного шага для установки, так как он уже присутствует на образе windows-latest
+
+    - name: Build with MSBuild
+      run: msbuild /p:Configuration=Release /p:Platform="Any CPU"
+
+    - name: NuGet Restore
+      run: nuget restore
+
+    - name: Pack
+      run: nuget pack path/to/your/.csproj -Properties Configuration=Release -OutputDirectory out
+
+    - name: Push NuGet package
+      run: dotnet nuget push out/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
