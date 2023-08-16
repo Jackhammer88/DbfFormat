@@ -19,7 +19,7 @@ jobs:
 
     - name: Build with MSBuild
       run: |
-        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" DbfLibrary\DbfLibrary.csproj /p:Configuration=Release /p:Platform="Any CPU"
+        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" DbfLibrary\DbfLibrary.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath="DbfLibrary\bin\Release\"      
 
     - name: Display directory structure
       run: tree /f /a
