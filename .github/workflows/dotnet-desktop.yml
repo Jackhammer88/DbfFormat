@@ -12,19 +12,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Setup MSBuild
-      uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: Add MSBuild to PATH
       run: |
         echo "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin" >> $GITHUB_PATH
 
-    - name: Build with MSBuild
-      run: msbuild /p:Configuration=Release /p:Platform="Any CPU"
-
     - name: NuGet Restore
       run: nuget restore
+
+    - name: Build with MSBuild
+      run: msbuild /p:Configuration=Release /p:Platform="Any CPU"
 
     - name: Pack
       run: nuget pack path/to/your/.csproj -Properties Configuration=Release -OutputDirectory out
