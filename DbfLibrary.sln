@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbfLibrary", "DbfLibrary\DbfLibrary.csproj", "{CE83A14A-E557-461A-B2A6-0529CB79D414}"
 EndProject
@@ -11,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FB6AF51C-414F-4A88-966B-BC94A9EAB374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB6AF51C-414F-4A88-966B-BC94A9EAB374}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB6AF51C-414F-4A88-966B-BC94A9EAB374}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB6AF51C-414F-4A88-966B-BC94A9EAB374}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE83A14A-E557-461A-B2A6-0529CB79D414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE83A14A-E557-461A-B2A6-0529CB79D414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE83A14A-E557-461A-B2A6-0529CB79D414}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -22,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7877C012-3F1B-4E43-A474-1933603329E9}
 	EndGlobalSection
 EndGlobal

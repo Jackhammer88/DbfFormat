@@ -490,7 +490,6 @@ namespace Dbf
                                         List<DbfFieldDescriptor> columns,
                                         Encoding encoding)
         {
-            int control = 0;
             try
             {
 
@@ -517,7 +516,6 @@ namespace Dbf
 
                 for (int i = 0; i < values.Count; i++)
                 {
-                    control = i;
                     // All dbf field records begin with a deleted flag field. Deleted - 0x2A (asterisk) else 0x20 (space)
                     writer.Write(byte.Parse("20", System.Globalization.NumberStyles.HexNumber));
 
@@ -548,12 +546,9 @@ namespace Dbf
                 System.IO.File.WriteAllText(GetCpgFileName(fileName), encoding.BodyName);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string message = ex.Message;
-
-                string m2 = message + " " + control.ToString();
-
+                throw;
             }
         }
 

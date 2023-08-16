@@ -26,7 +26,7 @@ namespace IRI.Ket.IO
         {
             if (!System.IO.File.Exists(path))
             {
-                throw new NotImplementedException();
+                throw new InvalidOperationException($"File {path} doesn't exist");
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -64,19 +64,20 @@ namespace IRI.Ket.IO
         public static byte[] StructureToByteArray<T>(T structure)
         {
             int len = Marshal.SizeOf(structure);
-
             byte[] result = new byte[len];
 
             IntPtr ptr = Marshal.AllocHGlobal(len);
 
-            //if fDeleteOld is set to `true` then it may throw exception!
-            Marshal.StructureToPtr(structure, ptr, false);
-
-            Marshal.Copy(ptr, result, 0, len);
-
-            Marshal.DestroyStructure(ptr, typeof(T));
-
-            Marshal.FreeHGlobal(ptr);
+            try
+            {
+                Marshal.StructureToPtr(structure, ptr, false);
+                Marshal.Copy(ptr, result, 0, len);
+            }
+            finally
+            {
+                Marshal.DestroyStructure(ptr, typeof(T));
+                Marshal.FreeHGlobal(ptr);
+            }
 
             return result;
         }
@@ -84,16 +85,17 @@ namespace IRI.Ket.IO
         public static T ByteArrayToStructure<T>(byte[] buffer)
         {
             int length = buffer.Length;
-
             IntPtr i = Marshal.AllocHGlobal(length);
 
-            Marshal.Copy(buffer, 0, i, length);
-
-            T result = (T)Marshal.PtrToStructure(i, typeof(T));
-
-            Marshal.FreeHGlobal(i);
-
-            return result;
+            try
+            {
+                Marshal.Copy(buffer, 0, i, length);
+                return (T)Marshal.PtrToStructure(i, typeof(T));
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(i);
+            }
         }
 
         public static T ParseToStructure<T>(byte[] buffer) where T : struct
