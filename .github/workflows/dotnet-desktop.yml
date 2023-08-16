@@ -13,17 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Display Git Tag Version
-      run: |
-        TAG=$(git describe --tags --abbrev=0 2>&1)
-        if [ $? -eq 0 ]; then
-            echo "Git Tag Version: $TAG"
-        else
-            echo "No tags found"
-        fi
-      shell: bash
-
-
     - name: Add MSBuild to PATH
       run: |
         echo "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin" >> $GITHUB_PATH
